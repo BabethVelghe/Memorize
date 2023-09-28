@@ -8,13 +8,19 @@
 import SwiftUI
 // struct --> structure , kunnen variabelen & function ==> geen klasse !!!
 struct ContentView: View {
-    // moet enkel dit hebben 
+    // moet enkel dit hebben
+    let emojis: Array<String> = ["🐵","🐶", "🐸", "🐙"]
+    // let emojis: [String] = ["🐵","🐶", "🐸", "🐙"]
     var body: some View {
         HStack {
-            CardView(facedUp: true)
-            CardView()
-            CardView()
-            CardView()
+            // van zero up to for ..<
+            // van zero up to three ...
+            // geeft waarde terug
+            ForEach(emojis.indices, id: \.self){ index in
+                CardView(content : emojis[index])
+            }
+            
+            
         }
         .padding()
         .foregroundColor(.blue)
@@ -22,8 +28,10 @@ struct ContentView: View {
 }
 
 struct CardView : View {
+    let content :String
     // heeft te maken met tonen, niet van de app zelf
-    @State var facedUp : Bool = false
+    @State var facedUp : Bool = true
+    
     var body: some View {
         ZStack {
             // behaves like shape & view
@@ -33,7 +41,7 @@ struct CardView : View {
             if facedUp {
                 base.fill(.white)
                 base.strokeBorder(lineWidth: 6)
-                Text("👻").font(.largeTitle)
+                Text(content).font(.largeTitle)
             } else
             {
                 base.fill()
