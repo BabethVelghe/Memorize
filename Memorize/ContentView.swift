@@ -22,24 +22,29 @@ struct ContentView: View {
 }
 
 struct CardView : View {
-    var facedUp : Bool = false
+    // heeft te maken met tonen, niet van de app zelf
+    @State var facedUp : Bool = false
     var body: some View {
-        ZStack(content : {
+        ZStack {
+            // behaves like shape & view
+             let base = RoundedRectangle(cornerRadius: 12 )
+            // same thing
+            //let base :RoundedRectangle = RoundedRectangle(cornerRadius: 12 )
             if facedUp {
-                // behaves like shape & view
-                RoundedRectangle(cornerRadius: 12 )
-                    .fill(.white)
-                //    .foregroundColor(.white)
-                RoundedRectangle(cornerRadius: 12 )
-                // gekunt niet de rectangle een boord geven en opvullen 1 van de twee!!
-                    .strokeBorder(lineWidth: 6)
+                base.fill(.white)
+                base.strokeBorder(lineWidth: 6)
                 Text("👻").font(.largeTitle)
             } else
             {
-                RoundedRectangle(cornerRadius: 12 )
+                base.fill()
             }
-           
-        })
+           // onTapGesture(count : 2 ) { --> dubbelklik
+            // geen viewbuilder -> normaal code (
+        }.onTapGesture {
+            // de logica om de kaarten te wisselen zal gebeuren in backend,
+            // @State zal nie meer gebruikt worden
+            facedUp.toggle() // toggle wisselt van true to false or false to true
+        }
     }
 }
 struct ContentView_Previews: PreviewProvider {
