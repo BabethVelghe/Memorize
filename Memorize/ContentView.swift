@@ -9,32 +9,63 @@ import SwiftUI
 // struct --> structure , kunnen variabelen & function ==> geen klasse !!!
 struct ContentView: View {
     // moet enkel dit hebben
-    let emojis: Array<String> = ["🐵","🐶", "🐸", "🐙", "🐥", "🦋", "🐞", "🐯", "🐢", "🐡", "🐴"]
-     @State var cardCount: Int = 4
-    // let emojis: [String] = ["🐵","🐶", "🐸", "🐙"]
+    @State var emojis: Array<String> = []
+     
     var body: some View {
         VStack {
+            Text("Memorize! ").font(.largeTitle)
             ScrollView {
                 cards
             }
             Spacer()
-            cardCountadjusters
+            HStack(alignment: .firstTextBaseline,spacing: 52){
+                Spacer()
+                
+                select_button_theme(Theme.animals)
+                select_button_theme(Theme.food)
+                select_button_theme(Theme.vehicles)
+                Spacer()
+            }
             
         }
         .padding()
+        .onAppear{
+            selectDeck(Theme.animals)
+        }
     }
     var cards : some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
             // van zero up to for ..<
             // van zero up to three ...
             // geeft waarde terug
-            ForEach(0..<cardCount, id: \.self){ index in
+            ForEach(0..<emojis.count, id: \.self){ index in
                 CardView(content : emojis[index])
                     .aspectRatio(2/3, contentMode: .fit)
             }
 
         }.foregroundColor(.orange)
     }
+    
+    func selectDeck (_ theme: Theme){
+        emojis = theme.deck
+            .flatMap{ ([$0, $0])}
+            .shuffled()
+    }
+    
+    func select_button_theme(_ theme : Theme) -> some View {
+        Button(action : {
+            selectDeck(theme)
+        }, label : {
+            VStack {
+                Image(systemName: theme.symbol).font(.title)
+                
+                Text(theme.name).font(.caption2)
+            }
+            
+            
+        })
+    }
+    /*
     var cardCountadjusters : some View {
         HStack {
             cardRemover
@@ -59,35 +90,10 @@ struct ContentView: View {
     }
     var cardAdder : some View {
          cardCountAdjuster(by: +1, symbol: "plus.circle")
-    }
+    }*/
 }
 
-struct CardView : View {
-    let content :String
-    // heeft te maken met tonen, niet van de app zelf
-    @State var facedUp : Bool = true
-    
-    var body: some View {
-        ZStack {
-            // behaves like shape & view
-             let base = RoundedRectangle(cornerRadius: 12 )
-            // same thing
-            //let base :RoundedRectangle = RoundedRectangle(cornerRadius: 12 )
-            Group {
-                base.fill(.white)
-                base.strokeBorder(lineWidth: 6)
-                Text(content).font(.largeTitle)
-            }
-            base.fill().opacity(facedUp ? 0 : 1)
-           // onTapGesture(count : 2 ) { --> dubbelklik
-            // geen viewbuilder -> normaal code (
-        }.onTapGesture {
-            // de logica om de kaarten te wisselen zal gebeuren in backend,
-            // @State zal nie meer gebruikt worden
-            facedUp.toggle() // toggle wisselt van true to false or false to true
-        }
-    }
-}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

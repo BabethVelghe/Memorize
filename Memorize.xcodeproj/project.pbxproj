@@ -11,6 +11,8 @@
 		453A44C12AC4597D004DD8EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453A44C02AC4597D004DD8EA /* ContentView.swift */; };
 		453A44C32AC4597F004DD8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 453A44C22AC4597F004DD8EA /* Assets.xcassets */; };
 		453A44C72AC4597F004DD8EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 453A44C62AC4597F004DD8EA /* Preview Assets.xcassets */; };
+		456A8BFE2AC5F983001B2C2F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A8BFD2AC5F983001B2C2F /* Theme.swift */; };
+		456A8C002AC5FF63001B2C2F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A8BFF2AC5FF63001B2C2F /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		453A44C22AC4597F004DD8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		453A44C42AC4597F004DD8EA /* Memorize.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memorize.entitlements; sourceTree = "<group>"; };
 		453A44C62AC4597F004DD8EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		456A8BFD2AC5F983001B2C2F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		456A8BFF2AC5FF63001B2C2F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				453A44C22AC4597F004DD8EA /* Assets.xcassets */,
 				453A44C42AC4597F004DD8EA /* Memorize.entitlements */,
 				453A44C52AC4597F004DD8EA /* Preview Content */,
+				456A8BFD2AC5F983001B2C2F /* Theme.swift */,
+				456A8BFF2AC5FF63001B2C2F /* CardView.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -139,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456A8BFE2AC5F983001B2C2F /* Theme.swift in Sources */,
 				453A44C12AC4597D004DD8EA /* ContentView.swift in Sources */,
+				456A8C002AC5FF63001B2C2F /* CardView.swift in Sources */,
 				453A44BF2AC4597D004DD8EA /* MemorizeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
