@@ -78,7 +78,7 @@ struct EmojiMemoryGameView: View {
             } while columnCount < count
             return min(size.width / count, size.height * aspectRatio).rounded(.down)
         }
-    
+    ////
     
  /*   func selectDeck (_ theme: Theme){
         view = theme.deck
