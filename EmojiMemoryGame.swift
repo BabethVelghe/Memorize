@@ -26,11 +26,18 @@ class EmojiMemoryGame : ObservableObject{
     @Published private var model = createMemoryGame()
     // if you make it private --> full seperation
     var cards : Array<Card> {
-        return model.cards
+        model.cards
+    }
+    var color : Color {
+        .orange
+    }
+    
+    var  score : Int {
+        return model.score
     }
     //MARK: - Intents
     func shuffle() {
-        return model.shuffle()
+        model.shuffle()
     }
     
     // intent function
