@@ -47,8 +47,8 @@ struct CardView : View {
                           .padding(Constants.Pie.inset)
                   )
                   .padding(Constants.inset)
-                  .cardify(isFaceUp: card.isFacedUp)
-                  .opacity(card.isMatched && !card.isFacedUp ? 0 : 1)
+                  .cardify(isFaceUp: card.isFaceUp)
+                  .opacity(card.isMatched && !card.isFaceUp ? 0 : 1)
     }
 }
 
@@ -79,7 +79,7 @@ struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
                 HStack {
-                    CardView(Card(isFacedUp: true, content: "X", id: "test1"))
+                    CardView(Card(isFaceUp: true, content: "X", id: "test1"))
                         .padding(4)
                         .foregroundColor(.green)
                     CardView(Card(content: "X", id: "test"))
@@ -87,7 +87,7 @@ struct CardView_Previews: PreviewProvider {
                         .foregroundColor(.green)
                 }
                 HStack {
-                    CardView(Card(isFacedUp: true, isMatched: true, content: "This is a very long string and I hope it fits",   id: "test"))
+                    CardView(Card(isFaceUp: true, isMatched: true, content: "This is a very long string and I hope it fits",   id: "test"))
                         .padding(4)
                         .foregroundColor(.green)
                     CardView(Card(isMatched: true, content: "X", id: "test"))

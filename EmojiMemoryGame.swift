@@ -14,7 +14,7 @@ class EmojiMemoryGame : ObservableObject{
     
     
     private static func createMemoryGame() -> MemoryGame<String> {
-        return MemoryGame(numberOfPairs: 12) { pairIndex in
+        return MemoryGame(numberOfPairsOfCards: 12) { pairIndex in
             if emojis.indices.contains(pairIndex){
                 return emojis[pairIndex]
             }else {
@@ -43,6 +43,6 @@ class EmojiMemoryGame : ObservableObject{
     // intent function
     //external name first name --> _ : means you dont have to use a external name when you call the function
     func choose(_ card: Card ) {
-        model.chooseCards(card)
+        model.choose(card)
     }
 }
